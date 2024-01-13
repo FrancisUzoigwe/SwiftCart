@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: main;
+  src: url(/public/fonts/Poppins-Regular.ttf);
+}
+
+.main {
+  font-family: main;
+}
+
+:root {
+  font-family: main;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+}
