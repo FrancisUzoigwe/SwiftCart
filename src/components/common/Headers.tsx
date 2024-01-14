@@ -1,39 +1,73 @@
+import { useState } from "react";
 import { IoMdCart } from "react-icons/io";
-
+import { IoMdMenu } from "react-icons/io";
+import { IoCloseSharp } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { changedToggle, toggled } from "../../global/GlobalState";
 const Headers = () => {
+  const [close, setClose] = useState<boolean>(false);
+  const onClose = () => {
+    setClose(!close);
+  };
+
+  const dispatch = useDispatch();
   return (
     <header className="w-full h-[60px] flex justify-center items-center">
       <div className="w-full h-[60px] flex justify-center items-center fixed bg-white">
         <div className="w-[95%] flex justify-between items-center">
-          <div className="font-bold hover:cursor-pointer">SwiftCart</div>
-          <div className="w-[90%] h-[60px] flex justify-between items-center">
-            <div className="flex w-[55%] justify-between items-center">
+          <div className="font-bold hover:cursor-pointer max-lg:mr-5">
+            SwiftCart
+          </div>
+          <div className="w-[90%] h-[60px] flex justify-between items-center ">
+            <div className="flex w-[45%] justify-between items-center">
               <div className="w-full h-[40px] flex items-center justify-center ">
                 <input
-                  type="text"
-                  className="w-[65%] h-full border pl-3 rounded-md outline-none"
+                  type="search"
+                  className="w-full h-full border pl-3 rounded-md outline-none"
                   placeholder="Search Categories "
                 />
-                <button className="ml-4 px-4 py-2 rounded-md border font-bold">
-                  Search Here
-                </button>
               </div>
             </div>
-            <div className="flex w-[27%] justify-between items-center">
-              <div className="flex items-center">
+            <div className="flex w-[30%] justify-between items-center">
+              <div className="flex items-center max-md:hidden">
                 <div className="mr-3 flex items-center justify-center  w-[50px] h-[50px] rounded-full border">
                   img
                 </div>
                 <div className="font-bold">Kossy Uzoigwe</div>
               </div>
+            </div>
+            <div className="flex items-center">
               <div className="relative hover:scale-110 hover:cursor-pointer transition-all duration-300">
-                <div className="text-[10px] bg-red-600 w-[15px] h-[15px] text-white top-0  absolute rounded-full flex items-center justify-center">
+                <div className="text-[10px] w-[15px] h-[15px] text-white top-0 bg-red-600  absolute rounded-full flex items-center justify-center">
                   1
                 </div>
                 <IoMdCart className="text-3xl  " />
               </div>
+              <div className="ml-10">
+                <div
+                  className=""
+                  onClick={() => {
+                    onClose();
+                  }}
+                >
+                  {!close ? (
+                    <IoMdMenu
+                      className="text-3xl max-md:text-2xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
+                      onClick={() => {
+                        dispatch(toggled());
+                      }}
+                    />
+                  ) : (
+                    <IoCloseSharp
+                      className="text-3xl max-md:text-2xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
+                      onClick={() => {
+                        dispatch(changedToggle());
+                      }}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
-            <div className="hidden max-md:flex">Menu</div>
           </div>
         </div>
       </div>
