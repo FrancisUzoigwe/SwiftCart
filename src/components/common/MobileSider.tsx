@@ -15,7 +15,7 @@ const MobileSider = () => {
       initial={false}
       animate={toggled ? "open" : "closed"}
       variants={variants}
-      transition={{ duration: 0.7, ease: "easeInOut" }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
     >
       <div>Hello</div>
     </motion.div>

@@ -45,7 +45,7 @@ const Headers = () => {
                 </div>
                 <IoMdCart className="text-3xl  " />
               </div>
-              <div className="ml-6 max-md:ml-10 hidden max-md:block">
+              <div className="ml-6  ">
                 <div
                   className=""
                   onClick={() => {
@@ -54,14 +54,14 @@ const Headers = () => {
                 >
                   {!close ? (
                     <IoMdMenu
-                      className=" max-md:text-3xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
+                      className=" text-3xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
                       onClick={() => {
                         dispatch(toggled());
                       }}
                     />
                   ) : (
                     <IoCloseSharp
-                      className="max-md:text-3xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
+                      className="text-3xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
                       onClick={() => {
                         dispatch(changedToggle());
                       }}

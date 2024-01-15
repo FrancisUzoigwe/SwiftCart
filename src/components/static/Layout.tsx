@@ -10,7 +10,7 @@ const Layout = () => {
         <Headers />
         <div className="flex">
           <Outlet />
-          <div className="fixed right-0 top-[60px] z-[300] hidden max-md:flex h-full ">
+          <div className="fixed right-0 top-[60px] z-[300]  h-full ">
             <MobileSider />
           </div>
         </div>
