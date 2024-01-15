@@ -4,6 +4,7 @@ import { IoMdMenu } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { changedToggle, toggled } from "../../global/GlobalState";
+import vite from "../../../public/vite.svg";
 const Headers = () => {
   const [close, setClose] = useState<boolean>(false);
   const onClose = () => {
@@ -13,7 +14,7 @@ const Headers = () => {
   const dispatch = useDispatch();
   return (
     <header className="w-full  h-[60px] flex justify-center items-center">
-      <div className="w-full h-[60px] flex justify-center items-center top-0 fixed bg-white">
+      <div className="w-full z-[300] h-[60px] flex justify-center items-center top-0 fixed bg-white">
         <div className="w-[95%] flex justify-between items-center">
           <div className="font-bold hover:cursor-pointer max-lg:mr-5">
             SwiftCart
@@ -30,9 +31,10 @@ const Headers = () => {
             </div>
             <div className="flex w-[30%] justify-between items-center">
               <div className="flex items-center max-md:hidden">
-                <div className="mr-3 flex items-center justify-center  w-[50px] h-[50px] rounded-full border">
-                  img
-                </div>
+                <img
+                  className="mr-3 flex items-center justify-center  w-[50px] h-[50px] rounded-full border object-cover"
+                  src={vite}
+                />
                 <div className="font-bold">Kossy Uzoigwe</div>
               </div>
             </div>
@@ -43,7 +45,7 @@ const Headers = () => {
                 </div>
                 <IoMdCart className="text-3xl  " />
               </div>
-              <div className="ml-6 max-md:ml-10">
+              <div className="ml-6 max-md:ml-10 hidden max-md:block">
                 <div
                   className=""
                   onClick={() => {
@@ -52,14 +54,14 @@ const Headers = () => {
                 >
                   {!close ? (
                     <IoMdMenu
-                      className="text-3xl max-md:text-2xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
+                      className=" max-md:text-3xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
                       onClick={() => {
                         dispatch(toggled());
                       }}
                     />
                   ) : (
                     <IoCloseSharp
-                      className="text-3xl max-md:text-2xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
+                      className="max-md:text-3xl hover:cursor-pointer transition-all duration-300 hover:scale-110"
                       onClick={() => {
                         dispatch(changedToggle());
                       }}
