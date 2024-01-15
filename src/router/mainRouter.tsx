@@ -7,6 +7,8 @@ import Layout from "../components/static/Layout";
 import MainScreen from "../pages/screen/MainScreen";
 import DetailScreen from "../pages/screen/DetailScreen";
 import Checkout from "../pages/screen/Checkout";
+import Category from "../pages/screen/Category";
+import Help from "../pages/screen/Help";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ export const mainRouter = createBrowserRouter([
       {
         path: "/auth/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/auth/category",
+        element: <Category />,
+      },
+      {
+        path: "/auth/help",
+        element: <Help />,
       },
     ],
   },

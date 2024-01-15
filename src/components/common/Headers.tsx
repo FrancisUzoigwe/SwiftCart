@@ -12,8 +12,8 @@ const Headers = () => {
 
   const dispatch = useDispatch();
   return (
-    <header className="w-full h-[60px] flex justify-center items-center">
-      <div className="w-full h-[60px] flex justify-center items-center fixed bg-white">
+    <header className="w-full  h-[60px] flex justify-center items-center">
+      <div className="w-full h-[60px] flex justify-center items-center top-0 fixed bg-white">
         <div className="w-[95%] flex justify-between items-center">
           <div className="font-bold hover:cursor-pointer max-lg:mr-5">
             SwiftCart
