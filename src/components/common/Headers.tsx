@@ -19,10 +19,10 @@ const Headers = () => {
             SwiftCart
           </div>
           <div className="w-[90%] h-[60px] flex justify-between items-center ">
-            <div className="flex w-[45%] justify-between items-center">
+            <div className="flex w-[45%] max-md:w-[100%] justify-between items-center">
               <div className="w-full h-[40px] flex items-center justify-center ">
                 <input
-                  type="search"
+                  type="text"
                   className="w-full h-full border pl-3 rounded-md outline-none"
                   placeholder="Search Categories "
                 />
@@ -43,7 +43,7 @@ const Headers = () => {
                 </div>
                 <IoMdCart className="text-3xl  " />
               </div>
-              <div className="ml-10">
+              <div className="ml-6 max-md:ml-10">
                 <div
                   className=""
                   onClick={() => {
