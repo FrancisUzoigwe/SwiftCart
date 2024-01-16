@@ -9,6 +9,7 @@ import DetailScreen from "../pages/screen/DetailScreen";
 import Checkout from "../pages/screen/Checkout";
 import Category from "../pages/screen/Category";
 import Help from "../pages/screen/Help";
+import Slick from "../pages/screen/Slick";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export const mainRouter = createBrowserRouter([
       {
         path: "/auth/help",
         element: <Help />,
+      },
+      {
+        path: "/auth/slick",
+        element: <Slick />,
       },
     ],
   },
