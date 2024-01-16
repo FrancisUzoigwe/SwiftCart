@@ -6,7 +6,7 @@ import MobileSider from "../common/MobileSider";
 const Layout = () => {
   return (
     <>
-      <div className="w-full bg-green-400 min-h-[100vh]">
+      <div className="w-full bg-[#fefe] min-h-[100vh]">
         <Headers />
         <div className="flex">
           <Outlet />

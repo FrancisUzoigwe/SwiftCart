@@ -1,7 +1,11 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
+import image1 from "../../assets/FirstSlide.png";
+import image2 from "../../assets/image2.jpg";
+import image3 from "../../assets/image3.jpg";
+import image4 from "../../assets/image4.jpg";
+import image from "../../assets/image5.png"
 function SampleNextArrow(props: any) {
   const { className, style, onClick } = props;
   return (
@@ -18,7 +22,6 @@ function SampleNextArrow(props: any) {
       onClick={onClick}
     />
   );
-
 }
 
 function SamplePrevArrow(props: any) {
@@ -79,25 +82,63 @@ const Slick = () => {
     ],
   };
   return (
-    <div className="w-full bg-[purple] h-full rounded-lg relative">
+    <div className="w-full h-full rounded-lg relative">
       <Slider {...settings}>
         <div className="w-full h-[410px] flex items-center justify-center">
-          <h3>1</h3>
+          <div
+            className="w-full h-full bg-[blue] rounded-md"
+            style={{
+              background: `url(${image1})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
         </div>
-        <div>
-          <h3>2</h3>
+
+        <div className="w-full h-[410px] flex items-center justify-center">
+          <div
+            className="w-full h-full bg-[blue] rounded-md"
+            style={{
+              background: `url(${image2})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
         </div>
-        <div>
-          <h3>3</h3>
+        <div className="w-full h-[410px] flex items-center justify-center">
+          <div
+            className="w-full h-full bg-[blue] rounded-md"
+            style={{
+              background: `url(${image3})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
         </div>
-        <div>
-          <h3>4</h3>
+        <div className="w-full h-[410px] flex items-center justify-center">
+          <div
+            className="w-full h-full bg-[blue] rounded-md"
+            style={{
+              background: `url(${image4})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
         </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
+        <div className="w-full h-[410px] flex items-center justify-center">
+          <div
+            className="w-full h-full bg-[blue] rounded-md"
+            style={{
+              background: `url(${image})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
         </div>
       </Slider>
     </div>
