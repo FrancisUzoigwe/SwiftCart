@@ -18,6 +18,7 @@ function SampleNextArrow(props: any) {
       onClick={onClick}
     />
   );
+  
 }
 
 function SamplePrevArrow(props: any) {
