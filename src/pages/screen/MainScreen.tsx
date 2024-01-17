@@ -1,7 +1,6 @@
 import Slick from "./Slick";
 import store from "../../assets/5k_store.png";
 import clear from "../../assets/clear.png";
-import { FaStar } from "react-icons/fa";
 import Cards from "../../components/common/Cards";
 const MainScreen = () => {
   return (
