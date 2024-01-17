@@ -2,7 +2,6 @@ import Slick from "./Slick";
 import store from "../../assets/5k_store.png";
 import clear from "../../assets/clear.png";
 import Cards from "../../components/common/Cards";
-import { MdArrowRightAlt } from "react-icons/md";
 const MainScreen = () => {
   return (
     <div className="w-full h-full flex flex-col items-center ">
