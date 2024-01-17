@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { IoMdCart } from "react-icons/io";
 import { IoMdMenu } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { changedToggle, toggled } from "../../global/GlobalState";
-import vite from "../../../public/vite.svg";
 const FirstHeader = () => {
   const [close, setClose] = useState<boolean>(false);
   const onClose = () => {
