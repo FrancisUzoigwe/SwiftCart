@@ -1,7 +1,7 @@
 
 const DetailScreen = () => {
   return (
-    <div>DetailScreen</div>
+    <div>Hello</div>
   )
 }
 
