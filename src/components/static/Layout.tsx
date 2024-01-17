@@ -14,8 +14,10 @@ const Layout = () => {
             <MobileSider />
           </div>
         </div>
-        <div className="fixed bottom-0 w-full  items-center justify-center bg-green-300  hidden max-md:flex">
-          <ButtomHeader />
+        <div className="fixed bottom-0 w-full  items-center justify-center bg-white  hidden max-md:flex">
+          <div className="w-[95%]">
+            <ButtomHeader />
+          </div>
         </div>
       </div>
     </>

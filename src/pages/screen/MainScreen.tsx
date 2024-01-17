@@ -11,7 +11,7 @@ const MainScreen = () => {
         </div>
         <div className="border h-[200px] rounded-lg">
           <div
-            className="w-full h-full"
+            className="w-full h-full rounded-lg"
             style={{
               background: `url(${store})`,
               backgroundRepeat: "no-repeat",
@@ -22,7 +22,7 @@ const MainScreen = () => {
         </div>
         <div className="border h-[200px] rounded-lg">
           <div
-            className="w-full h-full"
+            className="w-full h-full rounded-lg"
             style={{
               background: `url(${clear})`,
               backgroundRepeat: "no-repeat",
@@ -41,6 +41,8 @@ const MainScreen = () => {
             <div className=" font-bold  my-1 text-[18px]">See more item</div>
           </div>
           <div className="grid grid-cols-4 max-md:grid-cols-2 max-lg:grid-cols-3 gap-4 my-1">
+           <Cards/>
+           <Cards/>
            <Cards/>
            <Cards/>
            <Cards/>
