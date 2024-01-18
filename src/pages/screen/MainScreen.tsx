@@ -44,7 +44,7 @@ const MainScreen = () => {
               Top Selling Items
             </div>
           </div>
-          <div className="grid grid-cols-4 max-md:grid-cols-2 max-lg:grid-cols-3 gap-4 my-1">
+          <div className="grid grid-cols-4 max-md:grid-cols-2 max-lg:grid-cols-3 gap-2 my-1">
             <Cards />
             <Cards />
             <Cards />
