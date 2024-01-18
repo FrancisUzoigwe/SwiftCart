@@ -6,6 +6,7 @@ import image2 from "../../assets/image2.jpg";
 import image3 from "../../assets/image3.jpg";
 import image4 from "../../assets/image4.jpg";
 import image from "../../assets/image5.png"
+import  image6 from "../../assets/image6.png"
 function SampleNextArrow(props: any) {
   const { className, style, onClick } = props;
   return (
@@ -86,7 +87,7 @@ const Slick = () => {
       <Slider {...settings}>
         <div className="w-full h-[410px] flex items-center justify-center">
           <div
-            className="w-full h-full bg-[blue] rounded-md"
+            className="w-full h-full  rounded-md"
             style={{
               background: `url(${image1})`,
               backgroundRepeat: "no-repeat",
@@ -98,7 +99,7 @@ const Slick = () => {
 
         <div className="w-full h-[410px] flex items-center justify-center">
           <div
-            className="w-full h-full bg-[blue] rounded-md"
+            className="w-full h-full  rounded-md"
             style={{
               background: `url(${image2})`,
               backgroundRepeat: "no-repeat",
@@ -109,7 +110,7 @@ const Slick = () => {
         </div>
         <div className="w-full h-[410px] flex items-center justify-center">
           <div
-            className="w-full h-full bg-[blue] rounded-md"
+            className="w-full h-full  rounded-md"
             style={{
               background: `url(${image3})`,
               backgroundRepeat: "no-repeat",
@@ -120,7 +121,7 @@ const Slick = () => {
         </div>
         <div className="w-full h-[410px] flex items-center justify-center">
           <div
-            className="w-full h-full bg-[blue] rounded-md"
+            className="w-full h-full  rounded-md"
             style={{
               background: `url(${image4})`,
               backgroundRepeat: "no-repeat",
@@ -131,9 +132,20 @@ const Slick = () => {
         </div>
         <div className="w-full h-[410px] flex items-center justify-center">
           <div
-            className="w-full h-full bg-[blue] rounded-md"
+            className="w-full h-full  rounded-md"
             style={{
               background: `url(${image})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
+        </div>
+        <div className="w-full h-[410px] flex items-center justify-center">
+          <div
+            className="w-full h-full  rounded-md"
+            style={{
+              background: `url(${image6})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center",

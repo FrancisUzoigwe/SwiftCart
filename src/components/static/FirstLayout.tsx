@@ -15,7 +15,7 @@ const FirstLayout = () => {
           </div>
         </div>
         <div className="">
-          <div className="w-[95%]">
+          <div className="w-full">
             <Footer />
           </div>
         </div>
