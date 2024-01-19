@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../global/GlobalState";
 
 const MobileSider = () => {
+  const dispatch = useDispatch();
   const toggled = useSelector((state: any) => state.toggle);
 
   const variants = {
@@ -17,7 +20,13 @@ const MobileSider = () => {
       variants={variants}
       transition={{ duration: 0.4, ease: "easeInOut" }}
     >
-      <div>Hello</div>
+      <div
+        onClick={() => {
+          dispatch(logOut());
+        }}
+      >
+        Hello
+      </div>
     </motion.div>
   );
 };
