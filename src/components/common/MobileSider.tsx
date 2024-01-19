@@ -11,7 +11,7 @@ const MobileSider = () => {
 
   return (
     <motion.div
-      className="h-full bg-gray-400 shadow-md border-none"
+      className="h-full bg-gray-400 rounded-tl-md shadow-md border-none"
       initial={false}
       animate={toggled ? "open" : "closed"}
       variants={variants}

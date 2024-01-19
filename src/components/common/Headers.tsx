@@ -4,7 +4,6 @@ import { IoMdMenu } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { changedToggle, toggled } from "../../global/GlobalState";
-import vite from "../../../public/vite.svg";
 const Headers = () => {
   const [close, setClose] = useState<boolean>(false);
   const onClose = () => {
@@ -20,22 +19,13 @@ const Headers = () => {
             SwiftCart
           </div>
           <div className="w-[90%] h-[60px] flex justify-between items-center ">
-            <div className="flex w-[45%] max-md:w-[100%] justify-between items-center">
+            <div className="flex w-[45%] max-md:w-[60%] justify-between items-center">
               <div className="w-full h-[40px] flex items-center justify-center ">
                 <input
                   type="text"
                   className="w-full h-full border pl-3 rounded-md outline-none"
                   placeholder="Search Categories "
                 />
-              </div>
-            </div>
-            <div className="flex w-[30%] justify-between items-center">
-              <div className="flex items-center max-md:hidden">
-                <img
-                  className="mr-3 flex items-center justify-center  w-[50px] h-[50px] rounded-full border object-cover"
-                  src={vite}
-                />
-                <div className="font-bold">Kossy Uzoigwe</div>
               </div>
             </div>
             <div className="flex items-center">
