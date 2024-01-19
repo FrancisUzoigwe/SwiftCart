@@ -10,6 +10,7 @@ import Checkout from "../pages/screen/Checkout";
 import Category from "../pages/screen/Category";
 import Help from "../pages/screen/Help";
 import Slick from "../pages/screen/Slick";
+import PrivateRoute from "./PrivateRoute";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -33,9 +34,10 @@ export const mainRouter = createBrowserRouter([
   {
     path: "auth",
     element: (
-      // <PrivateRoute>
+      <PrivateRoute>
         <Layout />
-      // </PrivateRoute>
+        //{" "}
+      </PrivateRoute>
     ),
     children: [
       {

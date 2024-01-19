@@ -60,8 +60,8 @@ const Register = () => {
           <div className=" uppercase text-white my-2">
             Create a SwiftCart account
           </div>
-          <form className="w-[80%] h-[300px] bg-white rounded-md flex flex-col items-center">
-            <div className="w-[80%] mt-7">
+          <form className="w-[90%] h-[300px] bg-white rounded-md flex flex-col items-center">
+            <div className="w-[90%] mt-7">
               <div
                 className={`relative w-full h-auto border transition-all duration-300 rounded-md ${
                   focused || hasContent ? "border-blue-500" : "border-black"
@@ -89,7 +89,7 @@ const Register = () => {
                 Provide email address
               </div>
             </div>
-            <div className="w-[80%] mt-4">
+            <div className="w-[90%] mt-4">
               <div
                 className={`relative w-full h-auto border transition-all duration-300 rounded-md ${
                   focused2 || hasContent2 ? "border-blue-500" : "border-black"
@@ -117,7 +117,7 @@ const Register = () => {
                 Create a password
               </div>
             </div>
-            <div className="flex w-[80%] text-[14px] mt-2">
+            <div className="flex w-[90%] text-[14px] mt-2">
               Already have an account?{" "}
               <span className="text-red-400 ml-2 hover:cursor-pointer">
                 Signin
