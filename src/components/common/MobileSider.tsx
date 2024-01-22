@@ -8,7 +8,7 @@ const MobileSider = () => {
   const toggled = useSelector((state: any) => state.toggle);
 
   const variants = {
-    open: { width: 300 },
+    open: { width: 200 },
     closed: { width: 0, x: 0 },
   };
 

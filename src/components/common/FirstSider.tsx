@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const FirstSider = () => {
   const toggled = useSelector((state: any) => state.toggle);
 
   const variants = {
-    open: { width: 300 },
+    open: { width: 200 },
     closed: { width: 0, x: 0 },
   };
 
@@ -21,12 +22,16 @@ const FirstSider = () => {
         <div className="ml-4 w-full flex">
           {toggled && (
             <div className="transition-all duration-300 w-[50%] ">
-              <div className="my-4 hover:text-gray-700 hover:cursor-pointer transition-all duration-300 font-bold">
-                Create Account
-              </div>
-              <div className="my-4 font-bold hover:text-gray-700 hover:cursor-pointer transition-all duration-300">
-                Signin Account
-              </div>
+              <Link to="/register">
+                <div className="my-4 hover:text-gray-700 hover:cursor-pointer transition-all duration-300 font-bold">
+                  Create Account
+                </div>
+              </Link>
+              <Link to="/signin">
+                <div className="my-4 font-bold hover:text-gray-700 hover:cursor-pointer transition-all duration-300">
+                  Signin Account
+                </div>
+              </Link>
               <div className="my-4 font-bold hover:text-gray-700 hover:cursor-pointer transition-all duration-300">
                 Forgot Password
               </div>

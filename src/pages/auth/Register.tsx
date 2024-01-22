@@ -1,44 +1,30 @@
-import { useEffect, useRef, useState } from "react";
 import better from "../../assets/better1.jpg";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
 const Register = () => {
-  const [focused, setFocused] = useState<boolean>(false);
-  const [hasContent, setHasContent] = useState<boolean>(false);
-  const myRef = useRef<HTMLInputElement>(null);
-  const [focused2, setFocused2] = useState<boolean>(false);
-  const [hasContent2, setHasContent2] = useState<boolean>(false);
-  const myRef2 = useRef<HTMLInputElement>(null);
+  const Schema = yup.object({
+    email: yup.string().required(),
+    password: yup.string().required(),
+  });
 
-  const handleFocus = () => {
-    setFocused(true);
+  const {
+    handleSubmit,
+    formState: { errors },
+    register,
+  } = useForm({ resolver: yupResolver(Schema) });
+
+  const handle = handleSubmit(async (data) => {
+    console.log(data);
+  });
+
+  const [eye, setEye] = useState<boolean>(false);
+  const onEye = () => {
+    setEye(!eye);
   };
-
-  const handleBlur = () => {
-    setFocused(false);
-  };
-
-  const handleChange = () => {
-    setHasContent(!!myRef?.current?.value);
-  };
-
-  useEffect(() => {
-    setHasContent(!!myRef?.current?.value);
-  }, []);
-  const handleFocus2 = () => {
-    setFocused2(true);
-  };
-
-  const handleBlur2 = () => {
-    setFocused2(false);
-  };
-
-  const handleChange2 = () => {
-    setHasContent2(!!myRef2?.current?.value);
-  };
-
-  useEffect(() => {
-    setHasContent2(!!myRef2?.current?.value);
-  }, []);
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-full h-screen flex justify-between items-center">
@@ -60,62 +46,67 @@ const Register = () => {
           <div className=" uppercase text-white my-2">
             Create a SwiftCart account
           </div>
-          <form className="w-[90%] h-[300px] bg-white rounded-md flex flex-col items-center">
-            <div className="w-[90%] mt-7">
-              <div
-                className={`relative w-full h-auto border transition-all duration-300 rounded-md ${
-                  focused || hasContent ? "border-blue-500" : "border-black"
-                }`}
+          <form
+            onSubmit={handle}
+            className="w-[90%] h-[300px] bg-white rounded-md flex flex-col items-center"
+          >
+            <div className="w-[90%] h-[45px] mt-7">
+              <label
+                htmlFor="Username"
+                className="relative h-full block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
               >
                 <input
-                  onFocus={handleFocus}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  ref={myRef}
                   type="text"
-                  className={`w-full h-[40px]  outline-none rounded-md pl-3`}
+                  id="Username"
+                  {...register("email")}
+                  className="peer pl-3 h-full w-full border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                  placeholder="Username"
                 />
-                <label
-                  className={`absolute left-3 transition-all duration-300 ${
-                    focused || hasContent
-                      ? "-top-3 px-[6px] bg-white "
-                      : "top-[8px]"
-                  }`}
-                >
+
+                <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
                   Email
-                </label>
-              </div>
-              <div className="flex justify-end w-full text-[14px] font-bold text-red-400 ">
-                Provide email address
-              </div>
+                </span>
+              </label>
+              {errors?.email?.message && (
+                <div className="flex justify-end w-full text-[14px] font-bold text-red-400 ">
+                  Provide email address
+                </div>
+              )}
             </div>
-            <div className="w-[90%] mt-4">
+            <div className="w-[90%] relative h-[45px] mt-7">
               <div
-                className={`relative w-full h-auto border transition-all duration-300 rounded-md ${
-                  focused2 || hasContent2 ? "border-blue-500" : "border-black"
-                }`}
+                className="absolute z-[20] right-3 top-3"
+                onClick={() => {
+                  onEye();
+                }}
+              >
+                {!eye ? (
+                  <FaEye className="text-2xl " />
+                ) : (
+                  <FaEyeSlash className="text-2xl " />
+                )}
+              </div>
+              <label
+                htmlFor="Password"
+                className="relative h-full block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
               >
                 <input
-                  onFocus={handleFocus2}
-                  onChange={handleChange2}
-                  onBlur={handleBlur2}
-                  ref={myRef2}
-                  type="text"
-                  className={`w-full h-[40px]  outline-none rounded-md pl-3`}
+                  type={`${eye ? "text" : "password"}`}
+                  id="Password"
+                  {...register("password")}
+                  className="peer pl-3 w-full  h-full border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                  placeholder="Username"
                 />
-                <label
-                  className={`absolute left-3 transition-all duration-300 ${
-                    focused2 || hasContent2
-                      ? "-top-3 px-[6px] bg-white "
-                      : "top-[8px]"
-                  }`}
-                >
+
+                <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
                   Password
-                </label>
-              </div>
-              <div className="flex justify-end w-full text-[14px] font-bold text-red-400 ">
-                Create a password
-              </div>
+                </span>
+              </label>
+              {errors?.password?.message && (
+                <div className="flex justify-end w-full text-[14px] font-bold text-red-400 ">
+                  Create password
+                </div>
+              )}
             </div>
             <div className="flex w-[90%] text-[14px] mt-2">
               Already have an account?{" "}
