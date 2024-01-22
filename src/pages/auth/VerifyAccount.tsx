@@ -42,7 +42,7 @@ const VerifyAccount = () => {
           },
         }}
         initial={{ scale: 0 }}
-        className="w-[50%] relative flex items-center flex-col bg-white h-[300px] rounded-md  text-black"
+        className="w-[50%] max-md:w-[80%] relative flex items-center flex-col bg-white h-[300px] rounded-md  text-black"
       >
         <div className="absolute right-3 top-3">
           <IoCloseSharp
@@ -111,7 +111,7 @@ const VerifyAccount = () => {
             </div>
           )}
         </div>
-        <div className="my-2 text-[14px] text-center max-sm:text-[12px] w-[95%]">
+        <div className="my-4 text-[14px] text-center max-sm:text-[12px] w-[95%]">
           Check your email for a verification token sent to your email 😊😊😊
         </div>
         <div className="">
