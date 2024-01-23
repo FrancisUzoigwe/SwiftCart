@@ -28,15 +28,16 @@ const Signin = () => {
 
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handle = handleSubmit(async (data: any) => {
+  const handle = handleSubmit(async (data) => {
     setLoading(true);
     const { email, password } = data;
     signinApi({ email, password }).then((res) => {
       if (res) {
         navigate("/auth");
-        const decode: any = jwtDecode(res);
+        const decode = jwtDecode(res);
+        console.log(decode);
+        
         dispatch(mainUser(res));
-        console.log("This is : ", typeof decode.id);
         setLoading(false);
       }
     });
