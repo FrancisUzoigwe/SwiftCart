@@ -43,16 +43,12 @@ const Signin = () => {
   });
 
   const { token } = useParams();
-  const { userID } = useParams();
 
   useEffect(() => {
-    if (token && userID) {
-      const decode: any = jwtDecode(token);
-      verifyApi(decode.id);
-      console.log(decode.id);
-      
+    if (token) {
+      verifyApi(token);
     }
-  }, []);
+  });
 
   const [eye, setEye] = useState<boolean>(false);
   const onEye = () => {
