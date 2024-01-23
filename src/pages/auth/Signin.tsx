@@ -3,10 +3,18 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signinApi, verifyApi } from "../../apis/authApi";
+import { useDispatch } from "react-redux";
+import { mainUser } from "../../global/GlobalState";
+import Loading from "../../components/common/Loading";
+import { useParams } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const Signin = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const Schema = yup.object({
     email: yup.string().required(),
     password: yup.string().required(),
@@ -18,9 +26,33 @@ const Signin = () => {
     register,
   } = useForm({ resolver: yupResolver(Schema) });
 
-  const handle = handleSubmit(async (data) => {
-    console.log(data);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handle = handleSubmit(async (data: any) => {
+    setLoading(true);
+    const { email, password } = data;
+    signinApi({ email, password }).then((res) => {
+      if (res) {
+        navigate("/auth");
+        const decode: any = jwtDecode(res);
+        dispatch(mainUser(res));
+        console.log("This is : ", typeof decode.id);
+        setLoading(false);
+      }
+    });
   });
+
+  const { token } = useParams();
+  const { userID } = useParams();
+
+  useEffect(() => {
+    if (token && userID) {
+      const decode: any = jwtDecode(token);
+      verifyApi(decode.id);
+      console.log(decode.id);
+      
+    }
+  }, []);
 
   const [eye, setEye] = useState<boolean>(false);
   const onEye = () => {
@@ -29,6 +61,7 @@ const Signin = () => {
 
   return (
     <>
+      {loading && <Loading />}
       <div className="w-full h-screen  flex items-center justify-center">
         <div className="w-full h-screen flex justify-between items-center">
           <div className="w-[50%] max-md:w-[100%] h-full flex flex-col items-center bg-[#313030]">
@@ -118,7 +151,13 @@ const Signin = () => {
                   type="submit"
                   className="px-5 py-2 rounded-md bg-black text-white"
                 >
-                  Signin
+                  {loading ? (
+                    <div className="flex ">
+                      <Loading /> <div className="ml-2">Signin Account</div>
+                    </div>
+                  ) : (
+                    <div>Signin</div>
+                  )}
                 </button>
               </div>
             </form>
@@ -129,7 +168,7 @@ const Signin = () => {
               backgroundImage: `url(${better})`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-              backgroundPosition: "center"
+              backgroundPosition: "center",
             }}
           ></div>
         </div>

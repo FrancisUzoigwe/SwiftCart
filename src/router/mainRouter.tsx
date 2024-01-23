@@ -22,6 +22,10 @@ export const mainRouter = createBrowserRouter([
     element: <Signin />,
   },
   {
+    path: "/api/:token/verify-account",
+    element: <Signin />,
+  },
+  {
     path: "/",
     element: <FirstLayout />,
     children: [
@@ -36,7 +40,6 @@ export const mainRouter = createBrowserRouter([
     element: (
       <PrivateRoute>
         <Layout />
-        //{" "}
       </PrivateRoute>
     ),
     children: [

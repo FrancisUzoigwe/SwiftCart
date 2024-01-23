@@ -7,12 +7,17 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VerifyAccount from "./VerifyAccount";
 import { verified } from "../../global/GlobalState";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { registerApi } from "../../apis/authApi";
+import Loading from "../../components/common/Loading";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const Schema = yup.object({
     email: yup.string().required(),
     password: yup.string().required(),
+    name: yup.string().required(),
   });
 
   const {
@@ -20,9 +25,15 @@ const Register = () => {
     formState: { errors },
     register,
   } = useForm({ resolver: yupResolver(Schema) });
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handle = handleSubmit(async (data) => {
-    console.log(data);
+    setLoading(true);
+    const { email, password, name } = data;
+    registerApi({ email, password, name }).then(() => {
+      navigate("/signin");
+      setLoading(false);
+    });
   });
 
   const [eye, setEye] = useState<boolean>(false);
@@ -35,7 +46,9 @@ const Register = () => {
 
   return (
     <>
+      {loading && <Loading />}
       {verify && <VerifyAccount />}
+
       <div className="w-full h-screen  flex items-center justify-center">
         <div className="w-full h-screen flex justify-between items-center">
           <div
@@ -58,7 +71,7 @@ const Register = () => {
             </div>
             <form
               onSubmit={handle}
-              className="w-[90%] h-[260px] bg-white rounded-md flex flex-col items-center"
+              className="w-[90%] h-[350px] bg-white rounded-md flex flex-col items-center"
             >
               <div className="w-[90%] h-[45px] mt-7">
                 <label
@@ -80,6 +93,29 @@ const Register = () => {
                 {errors?.email?.message && (
                   <div className="flex justify-end w-full text-[14px] font-bold text-red-400 ">
                     Provide email address
+                  </div>
+                )}
+              </div>
+              <div className="w-[90%] h-[45px] mt-7">
+                <label
+                  htmlFor="Name"
+                  className="relative h-full block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+                >
+                  <input
+                    type="text"
+                    id="Name"
+                    {...register("name")}
+                    className="peer pl-3 h-full w-full border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                    placeholder="Name"
+                  />
+
+                  <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                    Name
+                  </span>
+                </label>
+                {errors?.name?.message && (
+                  <div className="flex justify-end w-full text-[14px] font-bold text-red-400 ">
+                    Provide a name
                   </div>
                 )}
               </div>
@@ -118,7 +154,7 @@ const Register = () => {
                   </div>
                 )}
               </div>
-              <div className="flex w-[90%] text-[14px] mt-3 justify-between">
+              <div className="flex w-[90%] text-[14px] mt-6 justify-between">
                 <div>
                   Already have an account?{" "}
                   <Link to="/signin">
@@ -139,9 +175,15 @@ const Register = () => {
               <div className="mt-4">
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-md bg-black text-white"
+                  className="px-5 relative py-2 rounded-md bg-black text-white"
                 >
-                  Create Account
+                  {loading ? (
+                    <div className="flex ">
+                      <Loading /> <div className="ml-2">Creating Account</div>
+                    </div>
+                  ) : (
+                    <div>Create Account</div>
+                  )}
                 </button>
               </div>
             </form>
