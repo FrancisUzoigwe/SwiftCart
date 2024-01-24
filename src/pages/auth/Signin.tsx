@@ -60,7 +60,7 @@ const Signin = () => {
 
   return (
     <>
-      {loading && <Loading />}
+     
       <div className="w-full h-screen  flex items-center justify-center">
         <div className="w-full h-screen flex justify-between items-center">
           <div className="w-[50%] max-md:w-[100%] h-full flex flex-col items-center bg-[#313030]">
@@ -150,12 +150,12 @@ const Signin = () => {
                   type="submit"
                   className="px-5 py-2 rounded-md bg-black text-white"
                 >
-                  {loading ? (
-                    <div className="flex ">
-                      <Loading /> <div className="ml-2">Signin Account</div>
+                   {loading ? (
+                    <div className="flex items-center">
+                      <Loading /> <div className="ml-1">Signin Account</div>
                     </div>
                   ) : (
-                    <div>Signin</div>
+                    "Signin"
                   )}
                 </button>
               </div>

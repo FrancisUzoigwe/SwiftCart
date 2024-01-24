@@ -47,7 +47,6 @@ const Register = () => {
   return (
     <>
       {email && <EmailPage />}
-      {loading && <Loading />}
       {verify && <VerifyAccount />}
 
       <div className="w-full h-screen  flex items-center justify-center">
@@ -179,12 +178,19 @@ const Register = () => {
                   className="px-5 relative py-2 rounded-md bg-black text-white"
                 >
                   {loading ? (
+                    <div className="flex items-center">
+                      <Loading /> <div className="ml-1">Creating Account</div>
+                    </div>
+                  ) : (
+                    "Create Account"
+                  )}
+                  {/* {loading ? (
                     <div className="flex ">
                       <Loading /> <div className="ml-2">Creating Account</div>
                     </div>
                   ) : (
                     <div>Create Account</div>
-                  )}
+                  )} */}
                 </button>
               </div>
             </form>
