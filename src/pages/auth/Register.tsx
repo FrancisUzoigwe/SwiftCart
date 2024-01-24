@@ -164,14 +164,14 @@ const Register = () => {
                     </span>
                   </Link>
                 </div>
-                <div
+                {/* <div
                   className="font-bold hover:cursor-pointer"
                   onClick={() => {
                     dispatch(verified());
                   }}
                 >
                   Verify Account
-                </div>
+                </div> */}
               </div>
               <div className="mt-4">
                 <button
