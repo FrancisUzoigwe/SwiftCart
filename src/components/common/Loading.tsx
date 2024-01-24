@@ -6,13 +6,13 @@ const Loading = () => {
       <RotatingLines
         visible={true}
         width="25"
-        height="25"
-        color="red"
+        // height="25"
+        // color="red"
         strokeWidth="5"
         animationDuration="0.75"
         ariaLabel="rotating-lines-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
+        // wrapperStyle={{}}
+        // wrapperClass=""
       />
     </div>
   );
