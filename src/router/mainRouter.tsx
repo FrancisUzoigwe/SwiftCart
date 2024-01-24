@@ -22,7 +22,7 @@ export const mainRouter = createBrowserRouter([
     element: <Signin />,
   },
   {
-    path: "/api/:token/verify-account",
+    path: "/api/:userID/:token/verify-account",
     element: <Signin />,
   },
   {

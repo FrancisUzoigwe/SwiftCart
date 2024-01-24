@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const url: string = "https://swift-cart-be.onrender.com";
+// const url: string = "http://localhost:2345";
 
 export const registerApi = async (data: any) => {
   try {
@@ -22,10 +23,10 @@ export const signinApi = async (data: any) => {
   }
 };
 
-export const verifyApi = async (token: string) => {
+export const verifyApi = async (token: string, userID: string) => {
   try {
     return await axios
-      .patch(`${url}/api/${token}/verify-account`)
+      .patch(`${url}/api/${userID}/${token}/verify-account`)
       .then((res) => {
         return res.data?.data;
       });

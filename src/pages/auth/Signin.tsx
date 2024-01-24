@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux";
 import { mainUser } from "../../global/GlobalState";
 import Loading from "../../components/common/Loading";
 import { useParams } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -31,25 +30,28 @@ const Signin = () => {
   const handle = handleSubmit(async (data) => {
     setLoading(true);
     const { email, password } = data;
-    signinApi({ email, password }).then((res) => {
-      if (res) {
-        navigate("/auth");
-        const decode = jwtDecode(res);
-        console.log(decode);
-        
-        dispatch(mainUser(res));
+    signinApi({ email, password })
+      .then((res) => {
+        if (res) {
+          dispatch(mainUser(res));
+          navigate("/auth");
+          // const decode = jwtDecode(res);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
         setLoading(false);
-      }
-    });
+      });
   });
 
-  const { token } = useParams();
+  const { token, userID } = useParams();
 
   useEffect(() => {
-    if (token) {
-      verifyApi(token);
+    if (token && userID) {
+      verifyApi(token, userID);
+      console.log("This is ID: ", userID);
     }
-  });
+  }, [token, userID]);
 
   const [eye, setEye] = useState<boolean>(false);
   const onEye = () => {
