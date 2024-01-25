@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { changedToggle, logOut, verified } from "../../global/GlobalState";
+import { changedToggle, logOut } from "../../global/GlobalState";
 import VerifyAccount from "../../pages/auth/VerifyAccount";
 import { useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
@@ -40,9 +40,12 @@ const MobileSider = () => {
           <div className="ml-4 w-full flex">
             {toggled && (
               <div className="transition-all duration-300 w-[50%] ">
-                <div className="my-4 hover:text-gray-700 hover:cursor-pointer transition-all duration-300 font-bold" onClick={() => {
-                  navigate("/auth/product")
-                }}>
+                <div
+                  className="my-4 hover:text-gray-700 hover:cursor-pointer transition-all duration-300 font-bold"
+                  onClick={() => {
+                    navigate("/auth/product");
+                  }}
+                >
                   Products
                 </div>
                 <div className="my-4 ">

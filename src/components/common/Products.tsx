@@ -2,7 +2,7 @@ import { FaStar } from "react-icons/fa";
 import React from "react";
 
 interface iProduct {
-  pro;
+  pro: any
 }
 
 const Products: React.FC<iProduct> = ({ pro }) => {
