@@ -11,7 +11,7 @@ import Category from "../pages/screen/Category";
 import Help from "../pages/screen/Help";
 import Slick from "../pages/screen/Slick";
 import PrivateRoute from "./PrivateRoute";
-import ProductScreen from "../pages/screen/productScreen";
+import ProductScreen from "../pages/screen/ProductScreen";
 
 export const mainRouter = createBrowserRouter([
   {
