@@ -11,8 +11,13 @@ import { Link } from "react-router-dom";
 import { registerApi } from "../../apis/authApi";
 import Loading from "../../components/common/Loading";
 import EmailPage from "./EmailPage";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const email = useSelector((state: any) => state.verified);
+  const dispatch = useDispatch();
+  const verify = useSelector((state: any) => state.verify);
+
   const Schema = yup.object({
     email: yup.string().required(),
     password: yup.string().required(),
@@ -25,13 +30,21 @@ const Register = () => {
     register,
   } = useForm({ resolver: yupResolver(Schema) });
   const [loading, setLoading] = useState<boolean>(false);
-  // const [email, setEmail] = useState<boolean>(false);
 
   const handle = handleSubmit(async (data) => {
     setLoading(true);
     const { email, password, name } = data;
-    registerApi({ email, password, name }).then(() => {
-      dispatch(verified());
+    registerApi({ email, password, name }).then((res) => {
+      // console.log("This is res: ", data);
+      if (res?.message === "Success") {
+        Swal.fire({
+          icon: "success",
+          title: "Account Created successfully",
+          text: "Your account has been created successfully, proceed to email for verification link",
+        }).then(() => {
+          dispatch(verified());
+        });
+      }
       setLoading(false);
     });
   });
@@ -40,9 +53,6 @@ const Register = () => {
   const onEye = () => {
     setEye(!eye);
   };
-  const email = useSelector((state: any) => state.verified);
-  const dispatch = useDispatch();
-  const verify = useSelector((state: any) => state.verify);
 
   return (
     <>

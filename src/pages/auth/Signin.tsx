@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signinApi, verifyApi } from "../../apis/authApi";
 import { useDispatch } from "react-redux";
-import { mainUser } from "../../global/GlobalState";
+import { changeVerified, mainUser } from "../../global/GlobalState";
 import Loading from "../../components/common/Loading";
 import { useParams } from "react-router-dom";
 
@@ -33,9 +33,9 @@ const Signin = () => {
     signinApi({ email, password })
       .then((res) => {
         if (res) {
+          dispatch(changeVerified());
           dispatch(mainUser(res));
           navigate("/auth");
-          // const decode = jwtDecode(res);
           setLoading(false);
         }
       })
@@ -49,7 +49,6 @@ const Signin = () => {
   useEffect(() => {
     if (token && userID) {
       verifyApi(token, userID);
-      console.log("This is ID: ", userID);
     }
   }, [token, userID]);
 
@@ -60,7 +59,6 @@ const Signin = () => {
 
   return (
     <>
-     
       <div className="w-full h-screen  flex items-center justify-center">
         <div className="w-full h-screen flex justify-between items-center">
           <div className="w-[50%] max-md:w-[100%] h-full flex flex-col items-center bg-[#313030]">
@@ -150,7 +148,7 @@ const Signin = () => {
                   type="submit"
                   className="px-5 py-2 rounded-md bg-black text-white"
                 >
-                   {loading ? (
+                  {loading ? (
                     <div className="flex items-center">
                       <Loading /> <div className="ml-1">Signin Account</div>
                     </div>
