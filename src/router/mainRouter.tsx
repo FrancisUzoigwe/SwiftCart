@@ -11,6 +11,7 @@ import Category from "../pages/screen/Category";
 import Help from "../pages/screen/Help";
 import Slick from "../pages/screen/Slick";
 import PrivateRoute from "./PrivateRoute";
+import ProductScreen from "../pages/screen/productScreen";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ export const mainRouter = createBrowserRouter([
       {
         path: "/auth/category",
         element: <Category />,
+      },
+      {
+        path: "/auth/product",
+        element: <ProductScreen />,
       },
       {
         path: "/auth/help",

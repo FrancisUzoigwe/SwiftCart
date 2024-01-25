@@ -9,7 +9,6 @@ const MobileSider = () => {
   const toggled = useSelector((state: any) => state.toggle);
   const verify = useSelector((state: any) => state.verified);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const variants = {
     open: { width: 200 },
     closed: { width: 0, x: 0 },
@@ -20,16 +19,12 @@ const MobileSider = () => {
     dispatch(logOut());
   };
 
-  const handleForgot = () => {
-    dispatch(verified());
-    dispatch(changedToggle());
-    navigate("/register");
-  };
-
   const [products, setProducts] = useState<boolean>(false);
   const onProducts = () => {
     setProducts(!products);
   };
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -45,12 +40,9 @@ const MobileSider = () => {
           <div className="ml-4 w-full flex">
             {toggled && (
               <div className="transition-all duration-300 w-[50%] ">
-                <div
-                  className="my-4 hover:text-gray-700 hover:cursor-pointer transition-all duration-300 font-bold"
-                  onClick={() => {
-                    onProducts();
-                  }}
-                >
+                <div className="my-4 hover:text-gray-700 hover:cursor-pointer transition-all duration-300 font-bold" onClick={() => {
+                  navigate("/auth/product")
+                }}>
                   Products
                 </div>
                 <div className="my-4 ">
@@ -60,7 +52,7 @@ const MobileSider = () => {
                       onProducts();
                     }}
                   >
-                    Categories{" "}
+                    Categories
                     <div className="transition-all duration-300">
                       {!products ? (
                         <MdOutlineKeyboardArrowDown className="text-xl" />
@@ -74,7 +66,12 @@ const MobileSider = () => {
                       products ? "block" : "hidden"
                     }`}
                   >
-                    <div className="my-[6px] text-sm  hover:text-gray-700 hover:cursor-pointer transition-all duration-300 font-bold">
+                    <div
+                      className="my-[6px] text-sm  hover:text-gray-700 hover:cursor-pointer transition-all duration-300 font-bold"
+                      onClick={() => {
+                        navigate("/auth/category");
+                      }}
+                    >
                       Electronics
                     </div>
                     <div className="my-[6px] text-sm hover:text-gray-700 hover:cursor-pointer transition-all duration-300 font-bold">
@@ -93,7 +90,7 @@ const MobileSider = () => {
                 </div>
                 <div
                   className="my-4 font-bold hover:text-gray-700 hover:cursor-pointer transition-all duration-300"
-                  onClick={handleForgot}
+                  // onClick={handleForgot}
                 >
                   View Cart
                 </div>
