@@ -1,10 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { useViewOneHook } from "../../hooks/useViewOneHook";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../global/GlobalState";
 
 const SingleProduct = () => {
   const { productID } = useParams();
   const { data } = useViewOneHook(productID);
   const discount = data?.price + (data?.price * 30) / 100;
+  const dispatch = useDispatch()
   return (
     <div className="w-[95%] h-[90%] border bg-white rounded-xl max-md:flex-col flex items-center">
       <div className="w-[400px] max-md:w-[300px] max-md:h-[300px] h-[400px] ml-3 border rounded-md">
@@ -29,7 +32,9 @@ const SingleProduct = () => {
           {discount.toFixed(2)}
         </div>
         <div className="">
-          <button className=" mb-10 my-5 uppercase font-bold text-white bg-[orange] px-3 py-2 rounded-md">
+          <button className=" mb-10 my-5 uppercase font-bold text-white bg-[orange] px-3 py-2 rounded-md" onClick={() => {
+            dispatch(addToCart(data))
+          }}>
             Add to Cart
           </button>
         </div>

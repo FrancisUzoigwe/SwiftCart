@@ -4,6 +4,8 @@ import { removeFromCart } from "../../global/GlobalState";
 
 const FloatingCard = () => {
   const cart: any = useSelector((state: any) => state.cart);
+  // console.log(cart?.price);
+  
   return (
     <div className="w-[250px] min-h-[150px] fixed right-3 top-[150px] bg-white">
       <div className="w-[250px] min-h-[150px] shadow-md border border-[rgb(158,158,158)] rounded-md">
@@ -15,7 +17,14 @@ const FloatingCard = () => {
             <div className="font-bold my-1">Subtotal</div>
             <div className="font-bold">
               ₦ {""}
-              {cart?.price}
+              {cart
+              ?.map((props: any) => {
+                return props?.price;
+              })
+              .reduce((a: number | any, b: number | any) => {
+                return a + b;
+              }, 0)
+              .toLocaleString()}
             </div>
           </div>
         </div>
