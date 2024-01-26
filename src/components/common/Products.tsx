@@ -35,7 +35,7 @@ const Products: React.FC<iProduct> = ({ pro }) => {
             </div>
           </Link>
         </div>
-        <div className="w-full flex  z-[900] items-center justify-center  font-bold">
+        <div className="w-full flex  items-center justify-center  font-bold">
           <button
             className="py-[10px] px-4 rounded-md my-3 bg-[#ffb121] text-[13px] opacity-0 group-hover:opacity-100 transition-opacity uppercase"
             onClick={() => {
