@@ -2,8 +2,9 @@ import { useState } from "react";
 import { IoMdCart } from "react-icons/io";
 import { IoMdMenu } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changedToggle, toggled } from "../../global/GlobalState";
+import { Link } from "react-router-dom";
 const Headers = () => {
   const [close, setClose] = useState<boolean>(false);
   const onClose = () => {
@@ -11,6 +12,8 @@ const Headers = () => {
   };
 
   const dispatch = useDispatch();
+
+  const cart = useSelector((state: any) => state.cart);
   return (
     <header className="w-full  h-[60px] flex justify-center items-center">
       <div className="w-full z-[300] h-[60px] flex justify-center items-center top-0 fixed bg-white">
@@ -29,12 +32,14 @@ const Headers = () => {
               </div>
             </div>
             <div className="flex items-center">
-              <div className="relative hover:scale-110 hover:cursor-pointer transition-all duration-300">
+             <Link to="/auth/checkout">
+             <div className="relative hover:scale-110 hover:cursor-pointer transition-all duration-300">
                 <div className="text-[10px] w-[15px] h-[15px] text-white top-0 bg-red-600  absolute rounded-full flex items-center justify-center">
-                  1
+                  {cart.length === 0 ? "" : cart?.length}
                 </div>
                 <IoMdCart className="text-3xl  " />
               </div>
+             </Link>
               <div className="ml-6  ">
                 <div
                   className=""

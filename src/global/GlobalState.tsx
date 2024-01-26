@@ -4,6 +4,7 @@ const initialState = {
   toggle: false,
   user: {} || null,
   verify: false,
+  cart: [] as any,
 };
 
 const GlobalState = createSlice({
@@ -28,6 +29,23 @@ const GlobalState = createSlice({
     changeVerified: (state: any) => {
       state.verify = false;
     },
+    addToCart: (state, { payload }) => {
+      let check = state.cart.findIndex((el: any) => el?._id === payload?._id);
+      if (check >= 0) {
+        state.cart[check].QTY += 1;
+      } else {
+        const data = {
+          ...payload,
+          QTY: 1,
+        };
+        state.cart.push(data);
+      }
+    },
+    removeFromCart: (state: any, { payload }) => {
+      state.cart = state.cart.filter((el: any) => {
+        return el?._id !== payload?._id;
+      });
+    },
   },
 });
 
@@ -36,6 +54,8 @@ export const {
   changedToggle,
   logOut,
   mainUser,
+  addToCart,
+  removeFromCart,
   changeVerified,
   verified,
 } = GlobalState.actions;
