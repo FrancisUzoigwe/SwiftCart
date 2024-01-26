@@ -5,7 +5,7 @@ const ProductScreen = () => {
   const { data: products } = useProductHook();
   return (
     <div className="w-full min-h-[100vh] flex justify-center">
-      <div className=" w-[95%] h-full grid grid-cols-5 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2 gap-2">
+      <div className=" w-[95%] h-full grid grid-cols-5 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2 gap-3">
        {products?.map((pro: any) => (
         <Products pro={pro} key={pro?.id}/>
        ))}

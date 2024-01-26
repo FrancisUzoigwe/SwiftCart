@@ -1,8 +1,14 @@
+import SingleProduct from "../../components/common/SingleProduct";
 
 const DetailScreen = () => {
   return (
-    <div>DetailScreen</div>
-  )
-}
+    <div
+      className="w-full min-h-[90vh] flex  items-center justify-center"
+      style={{ backdropFilter: "blur(10px)" }}
+    >
+      <SingleProduct />
+    </div>
+  );
+};
 
-export default DetailScreen
+export default DetailScreen;

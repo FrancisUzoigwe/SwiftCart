@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { changedToggle, logOut } from "../../global/GlobalState";
 import VerifyAccount from "../../pages/auth/VerifyAccount";
 import { useState } from "react";
@@ -91,12 +91,11 @@ const MobileSider = () => {
                     </div>
                   </div>
                 </div>
-                <div
-                  className="my-4 font-bold hover:text-gray-700 hover:cursor-pointer transition-all duration-300"
-                  // onClick={handleForgot}
-                >
+                <Link to="/auth/checkout">
+                <div className="my-4 font-bold hover:text-gray-700 hover:cursor-pointer transition-all duration-300">
                   View Cart
                 </div>
+                </Link>
                 <div className="my-4 font-bold hover:text-gray-700 hover:cursor-pointer transition-all duration-300">
                   Help
                 </div>

@@ -53,6 +53,10 @@ export const mainRouter = createBrowserRouter([
         element: <DetailScreen />,
       },
       {
+        path: "/auth/:productID/detail",
+        element: <DetailScreen />,
+      },
+      {
         path: "/auth/checkout",
         element: <Checkout />,
       },

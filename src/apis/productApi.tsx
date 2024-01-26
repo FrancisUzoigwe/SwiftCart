@@ -10,3 +10,15 @@ export const viewAllProducts = async () => {
     console.log(error?.message);
   }
 };
+
+export const viewOneProduct = async (productID: any) => {
+  try {
+    return await axios
+      .get(`${url}/${productID}/view-one-product`)
+      .then((res) => {
+        return res?.data?.data
+      });
+  } catch (error: any) {
+    console.log(error?.message);
+  }
+};
