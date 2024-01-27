@@ -15,12 +15,12 @@ const ButtomHeader = () => {
             <div className="uppercase text-[12px] font-bold">Home</div>
           </div>
         </Link>
-        <Link to="/auth/category">
+        <Link to="/auth/product">
           <div className="flex flex-col items-center">
             <div>
               <BiCategory className="text-2xl" />
             </div>
-            <div className="uppercase text-[12px] font-bold">Category</div>
+            <div className="uppercase text-[12px] font-bold">Products</div>
           </div>
         </Link>
         <div className="flex flex-col items-center">
