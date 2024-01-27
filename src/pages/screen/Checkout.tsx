@@ -1,11 +1,39 @@
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../../global/GlobalState";
+// import React from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+import { usePaystackPayment } from "react-paystack";
 
 const FloatingCard = () => {
   const cart: any = useSelector((state: any) => state.cart);
-  // console.log(cart?.price);
-  
+  const user = useSelector((state: any) => state.user)
+  const config: any = {
+    reference: new Date().getTime().toString(),
+    email: `${user?.email}`,
+    amount:
+      cart
+        ?.map((props: any) => {
+          return props?.price;
+        })
+        .reduce((a: number | any, b: number | any) => {
+          return a + b;
+        }) * 100,
+    publicKey: "pk_live_94202d87146f507395f1045612cc6d0ec3a4fd29",
+  };
+
+  const handleSuccess = (reference: any) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    console.log(reference);
+  };
+
+  const handleClose = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log("closed");
+  };
+
+  const initializePayment: any = usePaystackPayment(config);
   return (
     <div className="w-[250px] min-h-[150px] fixed right-3 top-[150px] bg-white">
       <div className="w-[250px] min-h-[150px] shadow-md border border-[rgb(158,158,158)] rounded-md">
@@ -18,18 +46,23 @@ const FloatingCard = () => {
             <div className="font-bold">
               ₦ {""}
               {cart
-              ?.map((props: any) => {
-                return props?.price;
-              })
-              .reduce((a: number | any, b: number | any) => {
-                return a + b;
-              }, 0)
-              .toLocaleString()}
+                ?.map((props: any) => {
+                  return props?.price;
+                })
+                .reduce((a: number | any, b: number | any) => {
+                  return a + b;
+                }, 0)
+                .toLocaleString()}
             </div>
           </div>
         </div>
         <div className="w-full flex  justify-center">
-          <button className="my-5 py-2 px-4 rounded-md bg-black text-white">
+          <button
+            className="my-5 py-2 px-4 rounded-md bg-black text-white"
+            onClick={() => {
+              initializePayment(handleSuccess, handleClose);
+            }}
+          >
             Checkout{""} {""} ₦
             {cart
               ?.map((props: any) => {

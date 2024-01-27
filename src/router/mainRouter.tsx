@@ -61,7 +61,7 @@ export const mainRouter = createBrowserRouter([
         element: <Checkout />,
       },
       {
-        path: "/auth/category",
+        path: "/auth/detail",
         element: <Category />,
       },
       {
