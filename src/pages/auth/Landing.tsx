@@ -7,7 +7,12 @@ import compute from "../../assets/computing-deals.png";
 import game from "../../assets/gaming-deals.png";
 import accessories from "../../assets/accessories.png";
 import kstore from "../../assets/5k_store.png";
+import { viewAllProducts } from "../../apis/productApi";
+import useSWR from "swr";
 const MainScreen = () => {
+  const { data: product } = useSWR("/api/view-all-product", viewAllProducts);
+  console.log("My data's: ", product);
+
   return (
     <>
       <div className="w-full h-full flex flex-col items-center ">
@@ -46,10 +51,7 @@ const MainScreen = () => {
               </div>
             </div>
             <div className="grid grid-cols-4 max-md:grid-cols-2 max-lg:grid-cols-3 gap-2 my-1">
-              <Cards />
-              <Cards />
-              <Cards />
-              <Cards />
+                <Cards />
             </div>
           </div>
         </div>
