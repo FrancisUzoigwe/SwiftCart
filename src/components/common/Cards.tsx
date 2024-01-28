@@ -8,8 +8,8 @@ interface iProps {
 }
 
 const Cards: React.FC<iProps> = ({ props }) => {
+  console.log(props);
   const { data: product } = useSWR("/api/view-all-product", viewAllProducts);
-  let discount = props?.price + (props?.price * 30) / 100;
   return (
     <>
       {product?.map((props: any) => (
@@ -17,7 +17,10 @@ const Cards: React.FC<iProps> = ({ props }) => {
           <div className="h-[310px] rounded-xl hover:cursor-pointer hover:shadow-lg bg-white border flex flex-col items-center group hover:opacity-100 transition-opacity">
             <div className="w-full flex flex-col items-center">
               <div className="w-[95%]  mt-1 h-[160px] rounded-tr-lg rounded-tl-lg text-white">
-                <img src={props?.image} className="object-cover h-full w-full " />
+                <img
+                  src={props?.image}
+                  className="object-cover h-full w-full "
+                />
               </div>
               <div className="w-[95%] mt-2 ">{props?.name}</div>
               <div className="w-[95%] font-bold text-[red]">
