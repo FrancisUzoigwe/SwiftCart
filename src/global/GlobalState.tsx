@@ -5,6 +5,7 @@ const initialState = {
   user: {} || null,
   verify: false,
   cart: [] as any,
+  create: false,
 };
 
 const GlobalState = createSlice({
@@ -46,6 +47,12 @@ const GlobalState = createSlice({
         return el?._id !== payload?._id;
       });
     },
+    created: (state: any) => {
+      state.create = true;
+    },
+    changeCreated: (state: any) => {
+      state.create = false;
+    },
   },
 });
 
@@ -58,6 +65,8 @@ export const {
   removeFromCart,
   changeVerified,
   verified,
+  changeCreated,
+  created,
 } = GlobalState.actions;
 
 export default GlobalState.reducer;

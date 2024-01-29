@@ -23,12 +23,14 @@ const ButtomHeader = () => {
             <div className="uppercase text-[12px] font-bold">Products</div>
           </div>
         </Link>
-        <div className="flex flex-col items-center">
-          <div>
-            <MdManageAccounts className="text-3xl" />
+        <Link to="/auth/account">
+          <div className="flex flex-col items-center">
+            <div>
+              <MdManageAccounts className="text-3xl" />
+            </div>
+            <div className="uppercase text-[12px] font-bold">Account</div>
           </div>
-          <div className="uppercase text-[12px] font-bold">Account</div>
-        </div>
+        </Link>
         <Link to="/auth/help">
           <div className="flex flex-col items-center">
             <div>

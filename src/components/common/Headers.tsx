@@ -18,9 +18,11 @@ const Headers = () => {
     <header className="w-full  h-[60px] flex justify-center items-center">
       <div className="w-full z-[300] h-[60px] flex justify-center items-center top-0 fixed bg-white">
         <div className="w-[95%] flex justify-between items-center">
-          <div className="font-bold hover:cursor-pointer max-lg:mr-5">
+        <Link to="/auth">
+        <div className="font-bold hover:cursor-pointer max-lg:mr-5">
             SwiftCart
           </div>
+        </Link>
           <div className="w-[90%] h-[60px] flex justify-between items-center ">
             <div className="flex w-[45%] max-md:w-[60%] justify-between items-center">
               <div className="w-full h-[40px] flex items-center justify-center ">

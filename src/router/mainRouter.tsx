@@ -12,6 +12,7 @@ import Help from "../pages/screen/Help";
 import Slick from "../pages/screen/Slick";
 import PrivateRoute from "./PrivateRoute";
 import ProductScreen from "../pages/screen/ProductScreen";
+import AccountScreen from "../pages/screen/AccountScreen";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ export const mainRouter = createBrowserRouter([
       {
         path: "/auth/help",
         element: <Help />,
+      },
+      {
+        path: "/auth/account",
+        element: <AccountScreen />,
       },
       {
         path: "/auth/slick",
