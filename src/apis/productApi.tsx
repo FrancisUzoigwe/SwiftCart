@@ -16,9 +16,26 @@ export const viewOneProduct = async (productID: any) => {
     return await axios
       .get(`${url}/${productID}/view-one-product`)
       .then((res) => {
-        return res?.data?.data
+        return res?.data?.data;
       });
   } catch (error: any) {
     console.log(error?.message);
+  }
+};
+
+export const createProduct = async (userID: any, data: any) => {
+  try {
+    const config: any = {
+      "content-type": "multi-part/formdata",
+    };
+
+    return await axios
+      .post(`${url}/${userID}/create-product`, data, config)
+      .then((res) => {
+        console.log("This is response: ", res);
+        return res.data?.data;
+      });
+  } catch (error: any) {
+    console.log(error);
   }
 };

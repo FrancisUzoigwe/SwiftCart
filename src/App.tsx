@@ -13,10 +13,10 @@ const App = () => {
     axios
       .get("https://swift-cart-be.onrender.com")
       .then((res) => {
-        console.log("Backend now spinning:", res?.data);
+        console.log("Backend now spinning", res?.data?.message);
       })
       .catch((error: any) => {
-        console.log("Error connecting to the backend server:", error?.message);
+        console.log(typeof error);
       });
   });
   return (
