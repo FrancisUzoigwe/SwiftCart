@@ -19,7 +19,7 @@ const Products: React.FC<iProduct> = ({ pro }) => {
           <div className="w-[95%]">
             <Link to={`/auth/${pro?._id}/detail`}>
               <img
-                className="w-[95%] bg-white  my-1 h-[160px] rounded-lg text-white object-cover"
+                className="w-full bg-white  my-1 h-[160px] rounded-lg text-white object-cover"
                 src={pro?.image}
               />
               <div className="w-[95%]">{pro?.name}</div>
