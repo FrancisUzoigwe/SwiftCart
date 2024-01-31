@@ -6,12 +6,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createProduct } from "../../apis/productApi";
 import { MdCancel } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeCreated } from "../../global/GlobalState";
+import Loading from "../../components/common/Loading";
 const CreateScreen = () => {
   const Schema = yup.object({
-    price: yup.number().required(),
     name: yup.string().required(),
+    price: yup.number().required(),
   });
 
   const {
@@ -19,8 +20,9 @@ const CreateScreen = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(Schema) });
-  const [image, setImage] = useState(pix);
-  const [avatar, setAvatar] = useState<string>("");
+
+  const [image, setImage] = useState<string>("");
+  const [avatar, setAvatar] = useState(pix);
   const onHandleImage = (e: any) => {
     const localImage = e.target.files[0];
     const savedImage = URL.createObjectURL(localImage);
@@ -28,20 +30,23 @@ const CreateScreen = () => {
     setAvatar(savedImage);
   };
 
-  const userID = useSelector((state: any) => state.user?._id);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const onHandleSubmit: any = handleSubmit(async (data: any) => {
     const myForm: any = new FormData();
-    const { image, name, price } = data;
+    setLoading(true);
+    const { name, price } = data;
     myForm.append("name", name);
     myForm.append("price", price);
     myForm.append("image", image);
-    createProduct(userID, myForm).then(() => {
-      console.log("Created!");
-      
+    createProduct(myForm).then(() => {
+      console.log("Created!!");
     });
+    setLoading(false);
   });
 
   const dispatch = useDispatch();
+
   return (
     <div
       className="w-full h-screen z-[600] fixed top-0 left-0 flex items-center justify-center "
@@ -62,7 +67,7 @@ const CreateScreen = () => {
         <div className="w-[200px] flex justify-center h-[200px] mt-[20px]  rounded-lg relative ">
           <img
             alt=""
-            src={avatar ? avatar : image}
+            src={avatar}
             className="w-full h-full border object-cover rounded-lg"
           />
           <div className="text-white absolute -bottom-3 ">
@@ -123,9 +128,16 @@ const CreateScreen = () => {
         <div className="my-3">
           <button
             type="submit"
-            className="px-5  py-2 rounded-md text-white bg-[orange]"
+            className="px-5  py-2 rounded-md text-white bg-black"
           >
-            Create Product
+            {loading ? (
+              <div className="flex items-center">
+                <Loading />
+                <div className="ml-2">Creating</div>
+              </div>
+            ) : (
+              "Create Product"
+            )}
           </button>
         </div>
       </form>

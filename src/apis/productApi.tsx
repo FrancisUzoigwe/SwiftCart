@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const url: string = "https://swift-cart-be.onrender.com/api";
+const url: string = "http://localhost:2345/api";
+// const url: string = "https://swift-cart-be.onrender.com/api";
 export const viewAllProducts = async () => {
   try {
     return await axios.get(`${url}/view-all-products`).then((res) => {
@@ -23,16 +24,14 @@ export const viewOneProduct = async (productID: any) => {
   }
 };
 
-export const createProduct = async (userID: any, data: any) => {
+export const createProduct = async (data: any) => {
+  const config: any = {
+    "content-type": "multi-part/formdata",
+  };
   try {
-    const config: any = {
-      "content-type": "multi-part/formdata",
-    };
-
     return await axios
-      .post(`${url}/${userID}/create-product`, data, config)
+      .post(`${url}/create-product`, data, config)
       .then((res) => {
-        console.log("This is response: ", res);
         return res.data?.data;
       });
   } catch (error: any) {
