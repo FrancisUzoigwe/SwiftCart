@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const url: string = "http://localhost:2345/api";
-// const url: string = "https://swift-cart-be.onrender.com/api";
+// const url: string = "http://localhost:2345/api";
+const url: string = "https://swift-cart-be.onrender.com/api";
 export const viewAllProducts = async () => {
   try {
     return await axios.get(`${url}/view-all-products`).then((res) => {
